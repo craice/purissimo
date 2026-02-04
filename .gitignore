@@ -1,0 +1,23 @@
+# Adobe Illustrator source files
+*.ai
+
+# Favicon source (PNG variant, .ico is the production file)
+purissimo_favicon.png
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor and IDE files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Node modules (from tooling)
+node_modules/
+
+# Claude Code internal
+.claude/
