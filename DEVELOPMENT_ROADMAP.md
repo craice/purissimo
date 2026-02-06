@@ -473,6 +473,47 @@ This document breaks down the SPECIFICATION.md into actionable development phase
 
 ---
 
+## Phase 8: Version 1.1 — Icons & Examples
+
+**Goal:** Add icon system, component catalog, and examples page.
+
+### Tasks
+
+#### Icons
+- [x] **8.1** Add Google Material Symbols Outlined import (subseted via `icon_names`)
+- [x] **8.2** Create `.icon` class in components layer
+- [x] **8.3** Replace alert emojis with Material Symbols icons in `index.html`
+- [x] **8.4** Replace alert emojis with Material Symbols icons in `catalog.html`
+- [x] **8.5** Replace modal close `&times;` with Material Symbols `close` icon
+- [x] **8.6** Add Icons section to `catalog.html` sidebar and content
+
+#### Examples Page
+- [x] **8.7** Create `examples.html` with sidebar layout matching catalog
+- [x] **8.8** Hero Section recipe
+- [x] **8.9** Feature Grid recipe
+- [x] **8.10** Contact Form recipe
+- [x] **8.11** Pricing Cards recipe
+- [x] **8.12** Blog Post recipe
+- [x] **8.13** Settings Panel recipe
+- [x] **8.14** FAQ recipe
+- [x] **8.15** Stats Dashboard recipe
+
+#### Navigation & Documentation
+- [x] **8.16** Add Examples link to navbar in `index.html`, `catalog.html`, and `examples.html`
+- [x] **8.17** Update version to 1.1.0 in CSS header, footers, and roadmap
+- [x] **8.18** Update SPECIFICATION.md (icon section, project structure, roadmap)
+- [x] **8.19** Update AI.md (file structure, icon patterns, modal pattern)
+- [x] **8.20** Regenerate `purissimo.min.css`
+- [x] **8.21** Create release tag (v1.1.0)
+
+### Deliverables
+- Material Symbols icon system integrated
+- `examples.html` with 8 component recipes
+- All documentation updated for v1.1.0
+- Release v1.1.0
+
+---
+
 ## Task Summary
 
 | Phase | Tasks | Focus |
@@ -484,7 +525,8 @@ This document breaks down the SPECIFICATION.md into actionable development phase
 | 5. Accessibility | 10 | WCAG, preferences |
 | 6. Documentation | 16 | Landing page, docs |
 | 7. Validation & Launch | 17 | Testing, deploy |
-| **Total** | **113** | |
+| 8. v1.1 Icons & Examples | 21 | Icons, examples page |
+| **Total** | **134** | |
 
 ---
 
@@ -519,10 +561,11 @@ Use this section to track overall progress:
 - [x] Phase 5: Accessibility
 - [x] Phase 6: Documentation
 - [x] Phase 7: Validation & Launch
+- [x] Phase 8: v1.1 Icons & Examples
 
 ---
 
-*Last updated: 2026-02-04*
+*Last updated: 2026-02-05*
 
 ---
 
@@ -565,6 +608,13 @@ A summary of what was accomplished in each phase, recorded as work is completed.
 |------|------|---------|
 | 2026-02-04 | 16:05 | Completed all 17 Phase 7 tasks. **Testing (7.1–7.5):** Ran cross-browser CSS audit — all features supported in last 2 versions of Chrome/Firefox/Safari/Edge; only `dvh` needed a `vh` fallback (added) and `:user-valid`/`:user-invalid` degrade gracefully. Ran responsive audit — identified and fixed: added responsive typography scaling (`@media max-width: 639px` reduces h1-h3 sizes), added `.overflow-auto` utility for table wrappers. Ran W3C CSS validator — no errors (only `@layer` not yet recognized by validator, vendor prefix warnings). Ran HTML validator — fixed all `no-implicit-button-type` errors (added `type="button"`), fixed `hidden-focusable` on modal overlay (added `tabindex="-1"`); remaining reports are only `no-inline-style` for design token visualizations. Ran final accessibility audit — all pass: focus states on every interactive element, proper heading hierarchy, form labels, ARIA attributes, skip link, modal a11y, document setup. **Optimization (7.6–7.8):** Minified CSS via clean-css-cli → `purissimo.min.css` at 39KB (under 50KB target). No images to optimize. **Documentation (7.9–7.10):** Finalized README.md with project description, features, quick start, what's included, installation options, file sizes, documentation link, AI usage section, browser support, contributing guidelines, and license. Documented metrics: 2,316 lines CSS, ~441 class selectors, 114 unique custom properties, 60KB unminified / 39KB minified. **Deployment (7.11–7.14):** GitHub Pages configuration, custom domain, final review, and release tagging are ready for manual execution by repository owner. **Post-Launch (7.15–7.17):** Social media sharing, portfolio addition, and feedback collection are manual tasks deferred to owner. |
 | 2026-02-04 | 16:30 | **Pre-deployment preparation:** Updated all GitHub URLs from `rafaelcraice/purissimo` to `craice/purissimo` across all files (purissimo.css header, index.html, README.md, examples/template.html). Added to `index.html` `<head>`: favicon (`favicon.ico`), Open Graph meta tags (`purissimo_og.png`), Twitter Card meta tags, canonical URL (`craice.github.io/purissimo/`), and Google Analytics (`G-0KNJBQ4ZHQ`). Added logo (`purissimo_logo.svg`) to navbar brand and hero section. Updated hero CTA buttons: Download CSS (links to `purissimo.min.css` with `download` attribute), View Components, and GitHub. Updated "How to Use" section step 1 with CDN URL and download link. Updated CLAUDE.md link to point to GitHub blob URL. Created `.gitignore` excluding: `*.ai` (Illustrator), `purissimo_favicon.png` (source PNG), OS files, editor files, `node_modules/`, `.claude/`. Re-minified `purissimo.min.css` with updated header URL. |
+
+### Phase 8: v1.1 Icons & Examples
+| Date | Time | Summary |
+|------|------|---------|
+| 2026-02-05 | — | Completed all 21 Phase 8 tasks. **Icons (8.1–8.6):** Added Google Material Symbols Outlined `@import` with `icon_names=` subset parameter (info, check_circle, warning, error, close) and `display=block`. Created `.icon` class (section 3.24) in components layer with proper font rendering properties. Replaced emoji icons in all 4 alerts across `index.html` and `catalog.html` with Material Symbols ligatures (`<span class="alert__icon icon">`). Replaced `&times;` modal close with `<span class="icon">close</span>` in both files. Added Icons section to `catalog.html` with available icons preview, alert usage code, and modal close usage code. Updated sidebar navigation. |
+| 2026-02-05 | — | **Examples page (8.7–8.15):** Created `examples.html` with sidebar layout matching catalog. Implemented 8 component composition recipes: Hero Section (heading, text, CTA buttons), Feature Grid (cards in auto-fit grid with icons), Contact Form (form fields, select, textarea, alert feedback, grid layout), Pricing Cards (cards with badges, icon checklists, CTA buttons), Blog Post (typography, blockquote, figure, code block, badges, divider), Settings Panel (card with toggles, radios, alert, buttons), FAQ (accordion with centered heading), Stats Dashboard (navbar, breadcrumb, alert, stat cards, table with badges). Each recipe includes live preview + copyable code block. |
+| 2026-02-05 | — | **Navigation & Documentation (8.16–8.21):** Added "Examples" navbar link to `index.html`, `catalog.html`, and `examples.html`. Updated version to 1.1.0 in: CSS header, catalog footer, examples footer. Updated `index.html` roadmap (v1.1 now Current). Updated `SPECIFICATION.md`: added Icon section (5.7), renumbered subsequent sections (5.8–5.16), updated project structure, updated roadmap. Updated `AI.md`: added Icon pattern, updated file structure, updated tech stack. Regenerated `purissimo.min.css` (~40KB). Updated `DEVELOPMENT_ROADMAP.md` with Phase 8, execution log, and AI decision log. |
 
 ---
 
@@ -651,6 +701,14 @@ Decisions made by AI tools during development. This log helps document the AI's 
 | 2026-02-04 | 16:30 | 7.11 | Created `.gitignore` excluding `.ai`, `.claude/`, `purissimo_favicon.png`, OS/editor files, `node_modules/` | `.ai` is the Illustrator source (648KB, not needed in repo); `purissimo_favicon.png` is a source PNG variant (`.ico` is the production file); `.claude/` is local tooling state |
 | 2026-02-04 | 16:30 | 7.11 | Changed CLAUDE.md link from relative path to GitHub blob URL | On GitHub Pages, relative link to `.md` file would serve raw markdown; GitHub blob URL renders it properly |
 | 2026-02-04 | 16:45 | 7.11 | Renamed `CLAUDE.md` to `AI.md` and updated all references | Generic name makes the file tool-agnostic; works equally well with Claude, ChatGPT, Copilot, Gemini, or any other AI assistant |
+| 2026-02-05 | — | 8.1 | Chose Material Symbols Outlined (not Rounded/Sharp) | Outlined style matches Purissimo's minimalist aesthetic; thin lines align with the design system's lightweight visual language |
+| 2026-02-05 | — | 8.1 | Used `icon_names=` parameter to subset the font (~2KB vs 295KB) | Only 5 icons needed; subsetting via Google Fonts CDN parameter avoids downloading the entire icon font |
+| 2026-02-05 | — | 8.1 | Used `display=block` instead of `display=swap` for icon font | `display=swap` causes ligature text flash (users see "info" then the icon); `display=block` shows invisible placeholder then icon, which is less jarring for icon fonts |
+| 2026-02-05 | — | 8.2 | Set `.icon` font-size to `1.25rem` (20px) | Matches well with default text size (16px) and alert icons; large enough to be clear, small enough to sit inline |
+| 2026-02-05 | — | 8.3–8.5 | Used `<span class="alert__icon icon">` dual-class pattern | Keeps BEM structure (`.alert__icon` for layout) while adding `.icon` for font rendering; composable and doesn't break existing styles |
+| 2026-02-05 | — | 8.5 | Wrapped modal close icon in `<span>` inside `<a>` tag | The `<a>` tag retains `.modal__close` layout styles; inner `<span class="icon">` handles font rendering; `aria-label` on `<a>` provides accessible name |
+| 2026-02-05 | — | 8.7 | Reused catalog.html's CSS layout (`.catalog`, `.catalog__sidebar`, `.story`) in examples.html | Consistent visual language across pages; users familiar with catalog immediately understand examples layout |
+| 2026-02-05 | — | 8.7–8.15 | Selected 8 recipes covering different composition patterns | Each recipe demonstrates a unique combination: centered layout (Hero), grid (Feature/Pricing/Stats), form composition (Contact/Settings), content layout (Blog), accordion composition (FAQ) |
 | | | | | |
 
 ### How to Use This Log

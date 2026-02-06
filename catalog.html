@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalog — Purissimo</title>
+  <meta name="description" content="Purissimo Catalog: complete reference of all components, variants, states, and utilities.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="purissimo.css">
+  <style>
+    .catalog {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: calc(100vh - 60px);
+    }
+    .catalog__sidebar {
+      position: sticky;
+      top: 60px;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      border-right: var(--border-width-thin) solid var(--color-border-light);
+      padding: var(--space-4) 0;
+      background: var(--color-bg-secondary);
+    }
+    .catalog__sidebar a {
+      display: block;
+      padding: var(--space-1) var(--space-4);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      transition: color var(--transition-fast), background var(--transition-fast);
+      border-left: 2px solid transparent;
+    }
+    .catalog__sidebar a:hover {
+      color: var(--color-action);
+      background: var(--alpha-light);
+      border-left-color: var(--color-action);
+    }
+    .catalog__main {
+      padding: var(--space-8) var(--space-6);
+      max-width: 960px;
+    }
+    .story {
+      margin-bottom: var(--space-12);
+    }
+    .story__title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--space-1);
+      padding-bottom: var(--space-2);
+      border-bottom: var(--border-width-thin) solid var(--color-border-light);
+    }
+    .story__desc {
+      color: var(--color-text-muted);
+      font-size: var(--font-size-sm);
+      margin-bottom: var(--space-4);
+    }
+    .story__section {
+      margin-bottom: var(--space-6);
+    }
+    .story__label {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-2);
+      text-transform: uppercase;
+      letter-spacing: var(--letter-spacing-wide);
+    }
+    .story__preview {
+      padding: var(--space-6);
+      border: var(--border-width-thin) solid var(--color-border-light);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg-primary);
+      margin-bottom: var(--space-3);
+    }
+    .story__preview--dark {
+      background: var(--gray-500);
+    }
+    .swatch {
+      display: inline-block;
+      width: var(--space-8);
+      height: var(--space-8);
+      border-radius: var(--radius-sm);
+      border: var(--border-width-thin) solid var(--color-border-light);
+      vertical-align: middle;
+    }
+    .demo-box {
+      background: var(--glacial-100);
+      border: var(--border-width-thin) solid var(--glacial-300);
+      border-radius: var(--radius-sm);
+      padding: var(--space-2);
+      text-align: center;
+      font-size: var(--font-size-sm);
+      color: var(--glacial-700);
+    }
+    .spacing-demo {
+      background: var(--glacial-100);
+      display: inline-block;
+    }
+    .spacing-inner {
+      background: var(--color-bg-primary);
+      padding: var(--space-2);
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+    .grid > .form-field + .form-field {
+      margin-top: 0;
+    }
+    @media (max-width: 768px) {
+      .catalog {
+        grid-template-columns: 1fr;
+      }
+      .catalog__sidebar {
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: var(--border-width-thin) solid var(--color-border-light);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        padding: var(--space-2) var(--space-4);
+      }
+      .catalog__sidebar a {
+        border-left: none;
+        padding: var(--space-1) var(--space-2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip Link -->
+  <a href="#catalog-main" class="skip-link">Skip to main content</a>
+
+  <!-- Navbar -->
+  <nav class="navbar container" aria-label="Main navigation">
+    <a href="index.html" class="navbar__brand">
+      <img src="purissimo_logo.svg" alt="Purissimo" width="140" height="32">
+    </a>
+    <ul class="navbar__menu">
+      <li><a href="index.html" class="navbar__link">Home</a></li>
+      <li><a href="catalog.html" class="navbar__link" aria-current="page">Catalog</a></li>
+      <li><a href="examples.html" class="navbar__link">Examples</a></li>
+      <li><a href="https://github.com/craice/purissimo" class="navbar__link">GitHub</a></li>
+    </ul>
+  </nav>
+
+  <!-- Catalog Layout -->
+  <div class="catalog">
+
+    <!-- Sidebar Navigation -->
+    <aside class="catalog__sidebar" aria-label="Component navigation">
+      <a href="#typography">Typography</a>
+      <a href="#icons">Icons</a>
+      <a href="#buttons">Buttons</a>
+      <a href="#links">Links</a>
+      <a href="#forms">Forms</a>
+      <a href="#tables">Tables</a>
+      <a href="#cards">Cards</a>
+      <a href="#alerts">Alerts</a>
+      <a href="#navigation">Navigation</a>
+      <a href="#accordion">Accordion</a>
+      <a href="#tabs">Tabs</a>
+      <a href="#modal">Modal</a>
+      <a href="#tooltip">Tooltip</a>
+      <a href="#badges">Badges</a>
+      <a href="#dividers">Dividers</a>
+      <a href="#blockquote-code">Blockquote &amp; Code</a>
+      <a href="#lists">Lists</a>
+      <a href="#figures">Figures</a>
+      <a href="#grid-containers">Grid &amp; Containers</a>
+      <a href="#spacing">Spacing</a>
+      <a href="#display-flex">Display &amp; Flex</a>
+      <a href="#text-font">Text &amp; Font Utilities</a>
+      <a href="#width-overflow">Width &amp; Overflow</a>
+      <a href="#accessibility">Accessibility</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="catalog-main" class="catalog__main">
+
+      <h1 class="heading-1 mb-6">Purissimo Catalog</h1>
+      <p class="text-lg text-muted mb-10">Every component, variant, state, and utility — all in one place.</p>
+
+      <!-- ============================================
+           1. Typography
+           ============================================ -->
+      <section id="typography" class="story">
+        <h2 class="story__title">Typography</h2>
+        <p class="story__desc">Heading classes, text sizes, and font weights.</p>
+
+        <div class="story__section">
+          <p class="story__label">Headings</p>
+          <div class="story__preview">
+            <h1 class="heading-1 mb-2">Heading 1</h1>
+            <h2 class="heading-2 mb-2">Heading 2</h2>
+            <h3 class="heading-3 mb-2">Heading 3</h3>
+            <h4 class="heading-4 mb-2">Heading 4</h4>
+            <h5 class="heading-5 mb-2">Heading 5</h5>
+            <h6 class="heading-6">Heading 6</h6>
+          </div>
+          <pre class="code-block"><code>&lt;h1 class="heading-1"&gt;Heading 1&lt;/h1&gt;
+&lt;h2 class="heading-2"&gt;Heading 2&lt;/h2&gt;
+&lt;h3 class="heading-3"&gt;Heading 3&lt;/h3&gt;
+&lt;h4 class="heading-4"&gt;Heading 4&lt;/h4&gt;
+&lt;h5 class="heading-5"&gt;Heading 5&lt;/h5&gt;
+&lt;h6 class="heading-6"&gt;Heading 6&lt;/h6&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Text Sizes</p>
+          <div class="story__preview">
+            <p class="text-lg mb-2">Text large — .text-lg</p>
+            <p class="mb-2">Text base (default)</p>
+            <p class="text-sm mb-2">Text small — .text-sm</p>
+            <p class="text-xs">Text extra small — .text-xs</p>
+          </div>
+          <pre class="code-block"><code>&lt;p class="text-lg"&gt;Text large&lt;/p&gt;
+&lt;p&gt;Text base (default)&lt;/p&gt;
+&lt;p class="text-sm"&gt;Text small&lt;/p&gt;
+&lt;p class="text-xs"&gt;Text extra small&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Text Muted</p>
+          <div class="story__preview">
+            <p class="text-muted">This text uses .text-muted for secondary content.</p>
+          </div>
+          <pre class="code-block"><code>&lt;p class="text-muted"&gt;Muted text&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Font Weights</p>
+          <div class="story__preview">
+            <p class="font-light mb-1">Font light (300) — .font-light</p>
+            <p class="font-regular mb-1">Font regular (400) — .font-regular</p>
+            <p class="font-medium mb-1">Font medium (500) — .font-medium</p>
+            <p class="font-semibold mb-1">Font semibold (600) — .font-semibold</p>
+            <p class="font-bold">Font bold (700) — .font-bold</p>
+          </div>
+          <pre class="code-block"><code>&lt;p class="font-light"&gt;Light&lt;/p&gt;
+&lt;p class="font-regular"&gt;Regular&lt;/p&gt;
+&lt;p class="font-medium"&gt;Medium&lt;/p&gt;
+&lt;p class="font-semibold"&gt;Semibold&lt;/p&gt;
+&lt;p class="font-bold"&gt;Bold&lt;/p&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           Icons
+           ============================================ -->
+      <section id="icons" class="story">
+        <h2 class="story__title">Icons</h2>
+        <p class="story__desc">Material Symbols Outlined icons via the <code class="code">.icon</code> class. Only subseted icons are loaded for performance.</p>
+
+        <div class="story__section">
+          <p class="story__label">Available Icons</p>
+          <div class="story__preview flex gap-6" style="flex-wrap: wrap; align-items: center;">
+            <span class="flex flex-col gap-2" style="align-items: center;">
+              <span class="icon" style="font-size: 2rem;" aria-hidden="true">info</span>
+              <span class="text-xs text-muted">info</span>
+            </span>
+            <span class="flex flex-col gap-2" style="align-items: center;">
+              <span class="icon" style="font-size: 2rem;" aria-hidden="true">check_circle</span>
+              <span class="text-xs text-muted">check_circle</span>
+            </span>
+            <span class="flex flex-col gap-2" style="align-items: center;">
+              <span class="icon" style="font-size: 2rem;" aria-hidden="true">warning</span>
+              <span class="text-xs text-muted">warning</span>
+            </span>
+            <span class="flex flex-col gap-2" style="align-items: center;">
+              <span class="icon" style="font-size: 2rem;" aria-hidden="true">error</span>
+              <span class="text-xs text-muted">error</span>
+            </span>
+            <span class="flex flex-col gap-2" style="align-items: center;">
+              <span class="icon" style="font-size: 2rem;" aria-hidden="true">close</span>
+              <span class="text-xs text-muted">close</span>
+            </span>
+          </div>
+          <pre class="code-block"><code>&lt;span class="icon" aria-hidden="true"&gt;info&lt;/span&gt;
+&lt;span class="icon" aria-hidden="true"&gt;check_circle&lt;/span&gt;
+&lt;span class="icon" aria-hidden="true"&gt;warning&lt;/span&gt;
+&lt;span class="icon" aria-hidden="true"&gt;error&lt;/span&gt;
+&lt;span class="icon" aria-hidden="true"&gt;close&lt;/span&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Usage in Alerts</p>
+          <pre class="code-block"><code>&lt;div class="alert alert--info" role="alert"&gt;
+  &lt;span class="alert__icon icon" aria-hidden="true"&gt;info&lt;/span&gt;
+  &lt;p class="alert__message"&gt;Informational message.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Usage in Modal Close</p>
+          <pre class="code-block"><code>&lt;a href="#close" class="modal__close" aria-label="Close"&gt;
+  &lt;span class="icon" aria-hidden="true"&gt;close&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           2. Buttons
+           ============================================ -->
+      <section id="buttons" class="story">
+        <h2 class="story__title">Buttons</h2>
+        <p class="story__desc">Button variants, sizes, states, and link-as-button patterns.</p>
+
+        <div class="story__section">
+          <p class="story__label">Variants</p>
+          <div class="story__preview flex gap-3" style="flex-wrap: wrap;">
+            <button class="btn btn--primary">Primary</button>
+            <button class="btn btn--secondary">Secondary</button>
+            <button class="btn btn--ghost">Ghost</button>
+          </div>
+          <pre class="code-block"><code>&lt;button class="btn btn--primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn--secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="btn btn--ghost"&gt;Ghost&lt;/button&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Sizes</p>
+          <div class="story__preview flex gap-3 items-center" style="flex-wrap: wrap;">
+            <button class="btn btn--primary btn--sm">Small</button>
+            <button class="btn btn--primary">Default</button>
+            <button class="btn btn--primary btn--lg">Large</button>
+          </div>
+          <pre class="code-block"><code>&lt;button class="btn btn--primary btn--sm"&gt;Small&lt;/button&gt;
+&lt;button class="btn btn--primary"&gt;Default&lt;/button&gt;
+&lt;button class="btn btn--primary btn--lg"&gt;Large&lt;/button&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">All Variant + Size Combinations</p>
+          <div class="story__preview">
+            <div class="flex gap-3 items-center mb-4" style="flex-wrap: wrap;">
+              <button class="btn btn--primary btn--sm">Primary SM</button>
+              <button class="btn btn--primary">Primary Default</button>
+              <button class="btn btn--primary btn--lg">Primary LG</button>
+            </div>
+            <div class="flex gap-3 items-center mb-4" style="flex-wrap: wrap;">
+              <button class="btn btn--secondary btn--sm">Secondary SM</button>
+              <button class="btn btn--secondary">Secondary Default</button>
+              <button class="btn btn--secondary btn--lg">Secondary LG</button>
+            </div>
+            <div class="flex gap-3 items-center" style="flex-wrap: wrap;">
+              <button class="btn btn--ghost btn--sm">Ghost SM</button>
+              <button class="btn btn--ghost">Ghost Default</button>
+              <button class="btn btn--ghost btn--lg">Ghost LG</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Disabled State</p>
+          <div class="story__preview flex gap-3" style="flex-wrap: wrap;">
+            <button class="btn btn--primary" disabled>Primary Disabled</button>
+            <button class="btn btn--secondary" disabled>Secondary Disabled</button>
+            <button class="btn btn--ghost" disabled>Ghost Disabled</button>
+          </div>
+          <pre class="code-block"><code>&lt;button class="btn btn--primary" disabled&gt;Primary Disabled&lt;/button&gt;
+&lt;button class="btn btn--secondary" disabled&gt;Secondary Disabled&lt;/button&gt;
+&lt;button class="btn btn--ghost" disabled&gt;Ghost Disabled&lt;/button&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Links as Buttons</p>
+          <div class="story__preview flex gap-3" style="flex-wrap: wrap;">
+            <a href="#" class="btn btn--primary">Primary Link</a>
+            <a href="#" class="btn btn--secondary">Secondary Link</a>
+            <a href="#" class="btn btn--ghost">Ghost Link</a>
+          </div>
+          <pre class="code-block"><code>&lt;a href="#" class="btn btn--primary"&gt;Primary Link&lt;/a&gt;
+&lt;a href="#" class="btn btn--secondary"&gt;Secondary Link&lt;/a&gt;
+&lt;a href="#" class="btn btn--ghost"&gt;Ghost Link&lt;/a&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <div class="grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-success);" aria-hidden="true">check_circle</span> Do</p>
+              <ul class="list text-sm">
+                <li>Use <code class="code">&lt;button&gt;</code> for actions, <code class="code">&lt;a class="btn"&gt;</code> for navigation</li>
+                <li>Choose variant by importance: primary for main action, secondary for alternatives</li>
+                <li>Add <code class="code">disabled</code> attribute when action is unavailable</li>
+              </ul>
+            </div>
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-error);" aria-hidden="true">error</span> Don't</p>
+              <ul class="list text-sm">
+                <li>Don't use <code class="code">&lt;div&gt;</code> or <code class="code">&lt;span&gt;</code> as buttons</li>
+                <li>Don't nest buttons inside other buttons or links</li>
+                <li>Don't use multiple primary buttons in the same context</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           3. Links
+           ============================================ -->
+      <section id="links" class="story">
+        <h2 class="story__title">Links</h2>
+        <p class="story__desc">Link styles for body text, subtle contexts, and navigation.</p>
+
+        <div class="story__section">
+          <p class="story__label">Default Link</p>
+          <div class="story__preview">
+            <a href="#" class="link">Default link style</a>
+          </div>
+          <pre class="code-block"><code>&lt;a href="#" class="link"&gt;Default link style&lt;/a&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Subtle Link</p>
+          <div class="story__preview">
+            <a href="#" class="link--subtle">Subtle link style</a>
+          </div>
+          <pre class="code-block"><code>&lt;a href="#" class="link--subtle"&gt;Subtle link style&lt;/a&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Nav Links</p>
+          <div class="story__preview flex gap-4">
+            <a href="#" class="link--nav">Nav Link</a>
+            <a href="#" class="link--nav" aria-current="page">Active Nav Link</a>
+          </div>
+          <pre class="code-block"><code>&lt;a href="#" class="link--nav"&gt;Nav Link&lt;/a&gt;
+&lt;a href="#" class="link--nav" aria-current="page"&gt;Active Nav Link&lt;/a&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           4. Forms
+           ============================================ -->
+      <section id="forms" class="story">
+        <h2 class="story__title">Forms</h2>
+        <p class="story__desc">Inputs, textareas, selects, checkboxes, radios, toggles, hints, and fieldsets.</p>
+
+        <div class="story__section">
+          <p class="story__label">Text Inputs (Various Types)</p>
+          <div class="story__preview grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
+            <div class="form-field">
+              <label class="form-label" for="sb-text">Text</label>
+              <input type="text" id="sb-text" class="form-input" placeholder="Enter text">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sb-email">Email</label>
+              <input type="email" id="sb-email" class="form-input" placeholder="user@example.com">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sb-password">Password</label>
+              <input type="password" id="sb-password" class="form-input" placeholder="Password">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sb-number">Number</label>
+              <input type="number" id="sb-number" class="form-input" placeholder="0">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sb-search">Search</label>
+              <input type="search" id="sb-search" class="form-input" placeholder="Search...">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sb-url">URL</label>
+              <input type="url" id="sb-url" class="form-input" placeholder="https://">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sb-tel">Telephone</label>
+              <input type="tel" id="sb-tel" class="form-input" placeholder="+1 (555) 000-0000">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sb-date">Date</label>
+              <input type="date" id="sb-date" class="form-input">
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="form-field"&gt;
+  &lt;label class="form-label" for="name"&gt;Name&lt;/label&gt;
+  &lt;input type="text" id="name" class="form-input" placeholder="Enter text"&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Input States</p>
+          <div class="story__preview grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
+            <div class="form-field">
+              <label class="form-label" for="sb-placeholder">Placeholder</label>
+              <input type="text" id="sb-placeholder" class="form-input" placeholder="Placeholder text">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sb-filled">Filled</label>
+              <input type="text" id="sb-filled" class="form-input" value="Filled value">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sb-disabled-input">Disabled</label>
+              <input type="text" id="sb-disabled-input" class="form-input" value="Disabled" disabled>
+            </div>
+          </div>
+          <p class="text-sm text-muted mt-2">Focus, valid, and invalid states activate on user interaction via <code class="code">:user-valid</code> and <code class="code">:user-invalid</code>.</p>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Textarea</p>
+          <div class="story__preview grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div class="form-field">
+              <label class="form-label" for="sb-textarea">Default</label>
+              <textarea id="sb-textarea" class="form-textarea" rows="3" placeholder="Enter message..."></textarea>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sb-textarea-disabled">Disabled</label>
+              <textarea id="sb-textarea-disabled" class="form-textarea" rows="3" disabled>Disabled textarea</textarea>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;textarea class="form-textarea" rows="3" placeholder="Enter message..."&gt;&lt;/textarea&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Select</p>
+          <div class="story__preview grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div class="form-field">
+              <label class="form-label" for="sb-select">Default</label>
+              <select id="sb-select" class="form-select">
+                <option value="">Choose option...</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sb-select-disabled">Disabled</label>
+              <select id="sb-select-disabled" class="form-select" disabled>
+                <option>Disabled select</option>
+              </select>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;select class="form-select"&gt;
+  &lt;option value=""&gt;Choose option...&lt;/option&gt;
+  &lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Form Hint</p>
+          <div class="story__preview">
+            <div class="form-field">
+              <label class="form-label" for="sb-hint">Username</label>
+              <input type="text" id="sb-hint" class="form-input" placeholder="your-username">
+              <p class="form-hint">Must be 3-20 characters with no spaces.</p>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;p class="form-hint"&gt;Must be 3-20 characters with no spaces.&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Checkboxes</p>
+          <div class="story__preview flex gap-6" style="flex-wrap: wrap;">
+            <label class="form-checkbox">
+              <input type="checkbox">
+              <span class="form-checkbox__indicator"></span>
+              <span class="form-checkbox__label">Unchecked</span>
+            </label>
+            <label class="form-checkbox">
+              <input type="checkbox" checked>
+              <span class="form-checkbox__indicator"></span>
+              <span class="form-checkbox__label">Checked</span>
+            </label>
+            <label class="form-checkbox">
+              <input type="checkbox" disabled>
+              <span class="form-checkbox__indicator"></span>
+              <span class="form-checkbox__label">Disabled</span>
+            </label>
+          </div>
+          <pre class="code-block"><code>&lt;label class="form-checkbox"&gt;
+  &lt;input type="checkbox"&gt;
+  &lt;span class="form-checkbox__indicator"&gt;&lt;/span&gt;
+  &lt;span class="form-checkbox__label"&gt;Label&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Radio Buttons</p>
+          <div class="story__preview">
+            <fieldset class="form-fieldset">
+              <legend class="form-legend">Choose one</legend>
+              <div class="flex gap-6" style="flex-wrap: wrap;">
+                <label class="form-radio">
+                  <input type="radio" name="sb-radio" value="a" checked>
+                  <span class="form-radio__indicator"></span>
+                  <span class="form-radio__label">Selected</span>
+                </label>
+                <label class="form-radio">
+                  <input type="radio" name="sb-radio" value="b">
+                  <span class="form-radio__indicator"></span>
+                  <span class="form-radio__label">Unselected</span>
+                </label>
+                <label class="form-radio">
+                  <input type="radio" name="sb-radio-disabled" value="c" disabled>
+                  <span class="form-radio__indicator"></span>
+                  <span class="form-radio__label">Disabled</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <pre class="code-block"><code>&lt;label class="form-radio"&gt;
+  &lt;input type="radio" name="group" value="a"&gt;
+  &lt;span class="form-radio__indicator"&gt;&lt;/span&gt;
+  &lt;span class="form-radio__label"&gt;Option&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Toggles</p>
+          <div class="story__preview flex gap-6" style="flex-wrap: wrap;">
+            <label class="form-toggle">
+              <input type="checkbox">
+              <span class="form-toggle__track"></span>
+              <span class="form-toggle__label">Off</span>
+            </label>
+            <label class="form-toggle">
+              <input type="checkbox" checked>
+              <span class="form-toggle__track"></span>
+              <span class="form-toggle__label">On</span>
+            </label>
+            <label class="form-toggle">
+              <input type="checkbox" disabled>
+              <span class="form-toggle__track"></span>
+              <span class="form-toggle__label">Disabled</span>
+            </label>
+          </div>
+          <pre class="code-block"><code>&lt;label class="form-toggle"&gt;
+  &lt;input type="checkbox"&gt;
+  &lt;span class="form-toggle__track"&gt;&lt;/span&gt;
+  &lt;span class="form-toggle__label"&gt;Label&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Fieldset &amp; Legend</p>
+          <div class="story__preview">
+            <fieldset class="form-fieldset">
+              <legend class="form-legend">Personal Information</legend>
+              <div class="grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+                <div class="form-field">
+                  <label class="form-label" for="sb-fname">First Name</label>
+                  <input type="text" id="sb-fname" class="form-input" placeholder="John">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="sb-lname">Last Name</label>
+                  <input type="text" id="sb-lname" class="form-input" placeholder="Doe">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <pre class="code-block"><code>&lt;fieldset class="form-fieldset"&gt;
+  &lt;legend class="form-legend"&gt;Personal Information&lt;/legend&gt;
+  &lt;!-- fields --&gt;
+&lt;/fieldset&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <div class="grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-success);" aria-hidden="true">check_circle</span> Do</p>
+              <ul class="list text-sm">
+                <li>Always pair <code class="code">&lt;label&gt;</code> with matching <code class="code">for</code>/<code class="code">id</code></li>
+                <li>Include indicator spans for custom checkbox/radio/toggle</li>
+                <li>Use semantic input types (<code class="code">email</code>, <code class="code">tel</code>, <code class="code">url</code>)</li>
+              </ul>
+            </div>
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-error);" aria-hidden="true">error</span> Don't</p>
+              <ul class="list text-sm">
+                <li>Don't skip labels — use <code class="code">.sr-only</code> if visually hidden</li>
+                <li>Don't omit <code class="code">.form-checkbox__indicator</code> or <code class="code">.form-radio__indicator</code></li>
+                <li>Don't use <code class="code">placeholder</code> as a replacement for labels</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           5. Tables
+           ============================================ -->
+      <section id="tables" class="story">
+        <h2 class="story__title">Tables</h2>
+        <p class="story__desc">Base table with striped and bordered variants.</p>
+
+        <div class="story__section">
+          <p class="story__label">Base Table</p>
+          <div class="story__preview overflow-auto">
+            <table class="table w-full">
+              <thead>
+                <tr><th>Name</th><th>Role</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Alice</td><td>Designer</td><td>Active</td></tr>
+                <tr><td>Bob</td><td>Developer</td><td>Active</td></tr>
+                <tr><td>Carol</td><td>Manager</td><td>Away</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <pre class="code-block"><code>&lt;table class="table"&gt;...&lt;/table&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Striped</p>
+          <div class="story__preview overflow-auto">
+            <table class="table table--striped w-full">
+              <thead>
+                <tr><th>Name</th><th>Role</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Alice</td><td>Designer</td><td>Active</td></tr>
+                <tr><td>Bob</td><td>Developer</td><td>Active</td></tr>
+                <tr><td>Carol</td><td>Manager</td><td>Away</td></tr>
+                <tr><td>Dave</td><td>QA</td><td>Active</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <pre class="code-block"><code>&lt;table class="table table--striped"&gt;...&lt;/table&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Bordered</p>
+          <div class="story__preview overflow-auto">
+            <table class="table table--bordered w-full">
+              <thead>
+                <tr><th>Name</th><th>Role</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Alice</td><td>Designer</td><td>Active</td></tr>
+                <tr><td>Bob</td><td>Developer</td><td>Active</td></tr>
+                <tr><td>Carol</td><td>Manager</td><td>Away</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <pre class="code-block"><code>&lt;table class="table table--bordered"&gt;...&lt;/table&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Striped + Bordered</p>
+          <div class="story__preview overflow-auto">
+            <table class="table table--striped table--bordered w-full">
+              <thead>
+                <tr><th>Name</th><th>Role</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Alice</td><td>Designer</td><td>Active</td></tr>
+                <tr><td>Bob</td><td>Developer</td><td>Active</td></tr>
+                <tr><td>Carol</td><td>Manager</td><td>Away</td></tr>
+                <tr><td>Dave</td><td>QA</td><td>Active</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <pre class="code-block"><code>&lt;table class="table table--striped table--bordered"&gt;...&lt;/table&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <div class="grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-success);" aria-hidden="true">check_circle</span> Do</p>
+              <ul class="list text-sm">
+                <li>Use <code class="code">&lt;thead&gt;</code> and <code class="code">&lt;tbody&gt;</code> for semantic structure</li>
+                <li>Use <code class="code">table--striped</code> for tables with many rows</li>
+                <li>Keep column count reasonable for mobile readability</li>
+              </ul>
+            </div>
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-error);" aria-hidden="true">error</span> Don't</p>
+              <ul class="list text-sm">
+                <li>Don't use tables for layout — use Grid or Flexbox</li>
+                <li>Don't skip <code class="code">&lt;th&gt;</code> elements in the header row</li>
+                <li>Don't put complex interactive components inside cells</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           6. Cards
+           ============================================ -->
+      <section id="cards" class="story">
+        <h2 class="story__title">Cards</h2>
+        <p class="story__desc">Card container with header, body, footer, and style variants.</p>
+
+        <div class="story__section">
+          <p class="story__label">Default Card</p>
+          <div class="story__preview">
+            <article class="card" style="max-width: 360px;">
+              <header class="card__header"><h3 class="card__title">Default Card</h3></header>
+              <div class="card__body"><p>This is the default card style with a subtle background.</p></div>
+              <footer class="card__footer"><a href="#" class="btn btn--primary btn--sm">Action</a></footer>
+            </article>
+          </div>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Elevated Card</p>
+          <div class="story__preview">
+            <article class="card card--elevated" style="max-width: 360px;">
+              <header class="card__header"><h3 class="card__title">Elevated Card</h3></header>
+              <div class="card__body"><p>Elevated card with a shadow for visual depth.</p></div>
+              <footer class="card__footer"><a href="#" class="btn btn--secondary btn--sm">Learn More</a></footer>
+            </article>
+          </div>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Outlined Card</p>
+          <div class="story__preview">
+            <article class="card card--outlined" style="max-width: 360px;">
+              <header class="card__header"><h3 class="card__title">Outlined Card</h3></header>
+              <div class="card__body"><p>Outlined card with a visible border for separation.</p></div>
+              <footer class="card__footer"><a href="#" class="btn btn--ghost btn--sm">Details</a></footer>
+            </article>
+          </div>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Glass Card</p>
+          <div class="story__preview story__preview--dark p-8">
+            <article class="card card--glass" style="max-width: 360px;">
+              <header class="card__header"><h3 class="card__title">Glass Card</h3></header>
+              <div class="card__body"><p>Glassmorphism effect with backdrop blur. Best on darker or image backgrounds.</p></div>
+              <footer class="card__footer"><a href="#" class="btn btn--primary btn--sm">Explore</a></footer>
+            </article>
+          </div>
+        </div>
+
+        <pre class="code-block"><code>&lt;article class="card card--elevated"&gt;
+  &lt;header class="card__header"&gt;
+    &lt;h3 class="card__title"&gt;Title&lt;/h3&gt;
+  &lt;/header&gt;
+  &lt;div class="card__body"&gt;&lt;p&gt;Content&lt;/p&gt;&lt;/div&gt;
+  &lt;footer class="card__footer"&gt;
+    &lt;a href="#" class="btn btn--primary btn--sm"&gt;Action&lt;/a&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+
+        <div class="story__section">
+          <div class="grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-success);" aria-hidden="true">check_circle</span> Do</p>
+              <ul class="list text-sm">
+                <li>Use <code class="code">&lt;article&gt;</code> as the card container</li>
+                <li>Maintain header/body/footer structure for consistency</li>
+                <li>Use <code class="code">card--elevated</code> or <code class="code">card--outlined</code> for visual hierarchy</li>
+              </ul>
+            </div>
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-error);" aria-hidden="true">error</span> Don't</p>
+              <ul class="list text-sm">
+                <li>Don't nest cards inside cards</li>
+                <li>Don't put long-form content in cards — use page sections</li>
+                <li>Don't mix variants in the same grid unless intentional</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           7. Alerts
+           ============================================ -->
+      <section id="alerts" class="story">
+        <h2 class="story__title">Alerts</h2>
+        <p class="story__desc">Contextual feedback messages for user actions.</p>
+
+        <div class="story__section">
+          <div class="story__preview flex flex-col gap-4">
+            <div class="alert alert--info" role="alert">
+              <span class="alert__icon icon" aria-hidden="true">info</span>
+              <p class="alert__message">This is an informational message.</p>
+            </div>
+            <div class="alert alert--success" role="alert">
+              <span class="alert__icon icon" aria-hidden="true">check_circle</span>
+              <p class="alert__message">Operation completed successfully.</p>
+            </div>
+            <div class="alert alert--warning" role="alert">
+              <span class="alert__icon icon" aria-hidden="true">warning</span>
+              <p class="alert__message">Please review before continuing.</p>
+            </div>
+            <div class="alert alert--error" role="alert">
+              <span class="alert__icon icon" aria-hidden="true">error</span>
+              <p class="alert__message">Something went wrong. Please try again.</p>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="alert alert--info" role="alert"&gt;
+  &lt;span class="alert__icon icon" aria-hidden="true"&gt;info&lt;/span&gt;
+  &lt;p class="alert__message"&gt;Informational message.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <div class="grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-success);" aria-hidden="true">check_circle</span> Do</p>
+              <ul class="list text-sm">
+                <li>Use the semantic variant matching the message type</li>
+                <li>Always include <code class="code">role="alert"</code> for screen readers</li>
+                <li>Keep messages concise — one or two sentences</li>
+              </ul>
+            </div>
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-error);" aria-hidden="true">error</span> Don't</p>
+              <ul class="list text-sm">
+                <li>Don't use alerts for decorative purposes</li>
+                <li>Don't stack more than 3 alerts in sequence</li>
+                <li>Don't omit the icon — it provides a non-color cue</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           8. Navigation
+           ============================================ -->
+      <section id="navigation" class="story">
+        <h2 class="story__title">Navigation</h2>
+        <p class="story__desc">Navbar and breadcrumb components.</p>
+
+        <div class="story__section">
+          <p class="story__label">Navbar</p>
+          <div class="story__preview">
+            <nav class="navbar" aria-label="Example navigation" style="padding: 0;">
+              <a href="#" class="navbar__brand" style="font-weight: var(--font-weight-bold);">Brand</a>
+              <ul class="navbar__menu">
+                <li><a href="#" class="navbar__link" aria-current="page">Home</a></li>
+                <li><a href="#" class="navbar__link">About</a></li>
+                <li><a href="#" class="navbar__link">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <pre class="code-block"><code>&lt;nav class="navbar" aria-label="Main navigation"&gt;
+  &lt;a href="/" class="navbar__brand"&gt;Brand&lt;/a&gt;
+  &lt;ul class="navbar__menu"&gt;
+    &lt;li&gt;&lt;a href="#" class="navbar__link" aria-current="page"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="navbar__link"&gt;About&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Breadcrumb</p>
+          <div class="story__preview">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Components</a></li>
+                <li aria-current="page">Navigation</li>
+              </ol>
+            </nav>
+          </div>
+          <pre class="code-block"><code>&lt;nav class="breadcrumb" aria-label="Breadcrumb"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Components&lt;/a&gt;&lt;/li&gt;
+    &lt;li aria-current="page"&gt;Current&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <div class="grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-success);" aria-hidden="true">check_circle</span> Do</p>
+              <ul class="list text-sm">
+                <li>Always add <code class="code">aria-label</code> to <code class="code">&lt;nav&gt;</code> elements</li>
+                <li>Mark the current page with <code class="code">aria-current="page"</code></li>
+                <li>Use <code class="code">&lt;ol&gt;</code> in breadcrumbs — order matters semantically</li>
+              </ul>
+            </div>
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-error);" aria-hidden="true">error</span> Don't</p>
+              <ul class="list text-sm">
+                <li>Don't use <code class="code">&lt;div&gt;</code> for navigation — use <code class="code">&lt;nav&gt;</code></li>
+                <li>Don't make the last breadcrumb item a link</li>
+                <li>Don't have multiple navbars without distinct labels</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           9. Accordion
+           ============================================ -->
+      <section id="accordion" class="story">
+        <h2 class="story__title">Accordion</h2>
+        <p class="story__desc">Expandable content sections using native details/summary.</p>
+
+        <div class="story__section">
+          <div class="story__preview">
+            <div class="accordion">
+              <details class="accordion__item" open>
+                <summary class="accordion__header">First item (open by default)</summary>
+                <div class="accordion__content"><p>This accordion item starts open. Content is revealed when the header is clicked.</p></div>
+              </details>
+              <details class="accordion__item">
+                <summary class="accordion__header">Second item</summary>
+                <div class="accordion__content"><p>Click to expand this section. Each item is independent.</p></div>
+              </details>
+              <details class="accordion__item">
+                <summary class="accordion__header">Third item</summary>
+                <div class="accordion__content"><p>Multiple items can be open at once since each is a native details element.</p></div>
+              </details>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="accordion"&gt;
+  &lt;details class="accordion__item" open&gt;
+    &lt;summary class="accordion__header"&gt;Title&lt;/summary&gt;
+    &lt;div class="accordion__content"&gt;&lt;p&gt;Content&lt;/p&gt;&lt;/div&gt;
+  &lt;/details&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <div class="grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-success);" aria-hidden="true">check_circle</span> Do</p>
+              <ul class="list text-sm">
+                <li>Use native <code class="code">&lt;details&gt;</code>/<code class="code">&lt;summary&gt;</code> — keyboard support built-in</li>
+                <li>Keep headers concise and descriptive</li>
+                <li>Group related items in a single <code class="code">.accordion</code> container</li>
+              </ul>
+            </div>
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-error);" aria-hidden="true">error</span> Don't</p>
+              <ul class="list text-sm">
+                <li>Don't nest accordions inside accordions</li>
+                <li>Don't use accordions to hide critical information</li>
+                <li>Don't replace navigation or tabs with accordions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           10. Tabs
+           ============================================ -->
+      <section id="tabs" class="story">
+        <h2 class="story__title">Tabs</h2>
+        <p class="story__desc">Tab navigation using CSS-only radio input technique.</p>
+
+        <div class="story__section">
+          <p class="story__label">3 Tabs</p>
+          <div class="story__preview">
+            <div class="tabs">
+              <input type="radio" name="sb-tabs-3" id="sb-tab-3-1" class="tabs__input" checked>
+              <label for="sb-tab-3-1" class="tabs__label">Overview</label>
+              <input type="radio" name="sb-tabs-3" id="sb-tab-3-2" class="tabs__input">
+              <label for="sb-tab-3-2" class="tabs__label">Features</label>
+              <input type="radio" name="sb-tabs-3" id="sb-tab-3-3" class="tabs__input">
+              <label for="sb-tab-3-3" class="tabs__label">Setup</label>
+              <div class="tabs__panels">
+                <div class="tabs__panel"><p>Overview panel content. This is the first tab.</p></div>
+                <div class="tabs__panel"><p>Features panel content. This is the second tab.</p></div>
+                <div class="tabs__panel"><p>Setup panel content. This is the third tab.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">5 Tabs (Maximum)</p>
+          <div class="story__preview">
+            <div class="tabs">
+              <input type="radio" name="sb-tabs-5" id="sb-tab-5-1" class="tabs__input" checked>
+              <label for="sb-tab-5-1" class="tabs__label">Tab 1</label>
+              <input type="radio" name="sb-tabs-5" id="sb-tab-5-2" class="tabs__input">
+              <label for="sb-tab-5-2" class="tabs__label">Tab 2</label>
+              <input type="radio" name="sb-tabs-5" id="sb-tab-5-3" class="tabs__input">
+              <label for="sb-tab-5-3" class="tabs__label">Tab 3</label>
+              <input type="radio" name="sb-tabs-5" id="sb-tab-5-4" class="tabs__input">
+              <label for="sb-tab-5-4" class="tabs__label">Tab 4</label>
+              <input type="radio" name="sb-tabs-5" id="sb-tab-5-5" class="tabs__input">
+              <label for="sb-tab-5-5" class="tabs__label">Tab 5</label>
+              <div class="tabs__panels">
+                <div class="tabs__panel"><p>Panel 1 content.</p></div>
+                <div class="tabs__panel"><p>Panel 2 content.</p></div>
+                <div class="tabs__panel"><p>Panel 3 content.</p></div>
+                <div class="tabs__panel"><p>Panel 4 content.</p></div>
+                <div class="tabs__panel"><p>Panel 5 content.</p></div>
+              </div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="tabs"&gt;
+  &lt;input type="radio" name="tab-group" id="tab-1" class="tabs__input" checked&gt;
+  &lt;label for="tab-1" class="tabs__label"&gt;Tab 1&lt;/label&gt;
+  &lt;!-- repeat for each tab --&gt;
+  &lt;div class="tabs__panels"&gt;
+    &lt;div class="tabs__panel"&gt;&lt;p&gt;Content&lt;/p&gt;&lt;/div&gt;
+    &lt;!-- one panel per tab --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <div class="grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-success);" aria-hidden="true">check_circle</span> Do</p>
+              <ul class="list text-sm">
+                <li>Match the number of panels to the number of radio inputs</li>
+                <li>Set one tab as <code class="code">checked</code> by default</li>
+                <li>Use unique <code class="code">name</code> attributes per tab group</li>
+              </ul>
+            </div>
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-error);" aria-hidden="true">error</span> Don't</p>
+              <ul class="list text-sm">
+                <li>Don't exceed 5 tabs — use different navigation for more</li>
+                <li>Don't use tabs for sequential steps — use a stepper</li>
+                <li>Don't reuse the same <code class="code">name</code> across tab groups</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           11. Modal
+           ============================================ -->
+      <section id="modal" class="story">
+        <h2 class="story__title">Modal</h2>
+        <p class="story__desc">CSS-only modal using :target selector. Click the button to open.</p>
+
+        <div class="story__section">
+          <div class="story__preview">
+            <a href="#sb-modal" class="btn btn--primary">Open Modal</a>
+          </div>
+
+          <div id="sb-modal" class="modal">
+            <a href="#modal" class="modal__overlay" tabindex="-1" aria-hidden="true"></a>
+            <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="sb-modal-title">
+              <header class="modal__header">
+                <h4 id="sb-modal-title" class="modal__title">Example Modal</h4>
+                <a href="#modal" class="modal__close" aria-label="Close modal"><span class="icon" aria-hidden="true">close</span></a>
+              </header>
+              <div class="modal__body">
+                <p>This modal is powered entirely by CSS using the <code class="code">:target</code> pseudo-class. No JavaScript needed.</p>
+              </div>
+              <footer class="modal__footer">
+                <a href="#modal" class="btn btn--secondary">Cancel</a>
+                <a href="#modal" class="btn btn--primary">Confirm</a>
+              </footer>
+            </div>
+          </div>
+
+          <pre class="code-block"><code>&lt;a href="#my-modal" class="btn btn--primary"&gt;Open Modal&lt;/a&gt;
+
+&lt;div id="my-modal" class="modal"&gt;
+  &lt;a href="#close" class="modal__overlay" tabindex="-1" aria-hidden="true"&gt;&lt;/a&gt;
+  &lt;div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="modal-title"&gt;
+    &lt;header class="modal__header"&gt;
+      &lt;h4 id="modal-title" class="modal__title"&gt;Title&lt;/h4&gt;
+      &lt;a href="#close" class="modal__close" aria-label="Close modal"&gt;&lt;span class="icon" aria-hidden="true"&gt;close&lt;/span&gt;&lt;/a&gt;
+    &lt;/header&gt;
+    &lt;div class="modal__body"&gt;&lt;p&gt;Content&lt;/p&gt;&lt;/div&gt;
+    &lt;footer class="modal__footer"&gt;
+      &lt;a href="#close" class="btn btn--secondary"&gt;Cancel&lt;/a&gt;
+      &lt;a href="#close" class="btn btn--primary"&gt;Confirm&lt;/a&gt;
+    &lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <div class="grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-success);" aria-hidden="true">check_circle</span> Do</p>
+              <ul class="list text-sm">
+                <li>Include <code class="code">role="dialog"</code> and <code class="code">aria-modal="true"</code></li>
+                <li>Link the title with <code class="code">aria-labelledby</code></li>
+                <li>Provide both close button and overlay dismiss</li>
+              </ul>
+            </div>
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-error);" aria-hidden="true">error</span> Don't</p>
+              <ul class="list text-sm">
+                <li>Don't open a modal from within another modal</li>
+                <li>Don't use modals for simple confirmations</li>
+                <li>Don't omit the close button or overlay</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           12. Tooltip
+           ============================================ -->
+      <section id="tooltip" class="story">
+        <h2 class="story__title">Tooltip</h2>
+        <p class="story__desc">Hover and focus-triggered tooltips via CSS.</p>
+
+        <div class="story__section">
+          <p class="story__label">Hover Tooltip</p>
+          <div class="story__preview">
+            <span class="tooltip">
+              Hover over me
+              <span class="tooltip__content">This is a tooltip</span>
+            </span>
+          </div>
+          <pre class="code-block"><code>&lt;span class="tooltip"&gt;
+  Hover over me
+  &lt;span class="tooltip__content"&gt;Tooltip text&lt;/span&gt;
+&lt;/span&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Focus Tooltip (Accessible)</p>
+          <div class="story__preview">
+            <button type="button" class="tooltip btn btn--secondary" aria-describedby="sb-tip">
+              Focus me
+              <span class="tooltip__content" role="tooltip" id="sb-tip">Accessible tooltip via focus</span>
+            </button>
+          </div>
+          <pre class="code-block"><code>&lt;button class="tooltip btn btn--secondary" aria-describedby="tip-id"&gt;
+  Focus me
+  &lt;span class="tooltip__content" role="tooltip" id="tip-id"&gt;Tooltip text&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <div class="grid gap-4" style="grid-template-columns: 1fr 1fr;">
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-success);" aria-hidden="true">check_circle</span> Do</p>
+              <ul class="list text-sm">
+                <li>Use <code class="code">aria-describedby</code> to link trigger to tooltip</li>
+                <li>Add <code class="code">role="tooltip"</code> on the content element</li>
+                <li>Keep tooltip text short — one sentence or a few words</li>
+              </ul>
+            </div>
+            <div>
+              <p class="story__label"><span class="icon text-sm" style="color: var(--color-error);" aria-hidden="true">error</span> Don't</p>
+              <ul class="list text-sm">
+                <li>Don't put interactive content inside tooltips</li>
+                <li>Don't use tooltips for essential information</li>
+                <li>Don't rely only on hover — ensure focus also triggers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           13. Badges
+           ============================================ -->
+      <section id="badges" class="story">
+        <h2 class="story__title">Badges</h2>
+        <p class="story__desc">Small status labels and counters.</p>
+
+        <div class="story__section">
+          <div class="story__preview flex gap-3" style="flex-wrap: wrap;">
+            <span class="badge">Default</span>
+            <span class="badge badge--primary">Primary</span>
+            <span class="badge badge--success">Success</span>
+            <span class="badge badge--warning">Warning</span>
+            <span class="badge badge--error">Error</span>
+          </div>
+          <pre class="code-block"><code>&lt;span class="badge"&gt;Default&lt;/span&gt;
+&lt;span class="badge badge--primary"&gt;Primary&lt;/span&gt;
+&lt;span class="badge badge--success"&gt;Success&lt;/span&gt;
+&lt;span class="badge badge--warning"&gt;Warning&lt;/span&gt;
+&lt;span class="badge badge--error"&gt;Error&lt;/span&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           14. Dividers
+           ============================================ -->
+      <section id="dividers" class="story">
+        <h2 class="story__title">Dividers</h2>
+        <p class="story__desc">Horizontal rules for content separation.</p>
+
+        <div class="story__section">
+          <p class="story__label">Default Divider</p>
+          <div class="story__preview">
+            <p>Content above</p>
+            <hr class="divider">
+            <p>Content below</p>
+          </div>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Subtle Divider</p>
+          <div class="story__preview">
+            <p>Content above</p>
+            <hr class="divider divider--subtle">
+            <p>Content below</p>
+          </div>
+          <pre class="code-block"><code>&lt;hr class="divider"&gt;
+&lt;hr class="divider divider--subtle"&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           15. Blockquote & Code
+           ============================================ -->
+      <section id="blockquote-code" class="story">
+        <h2 class="story__title">Blockquote &amp; Code</h2>
+        <p class="story__desc">Quotations, inline code, code blocks, and keyboard keys.</p>
+
+        <div class="story__section">
+          <p class="story__label">Blockquote</p>
+          <div class="story__preview">
+            <blockquote class="blockquote">
+              <p>The purest water on Earth flows beneath Antarctic ice — untouched, essential, enough.</p>
+              <footer class="blockquote__footer">
+                <cite>Purissimo Manifesto</cite>
+              </footer>
+            </blockquote>
+          </div>
+          <pre class="code-block"><code>&lt;blockquote class="blockquote"&gt;
+  &lt;p&gt;Quote text&lt;/p&gt;
+  &lt;footer class="blockquote__footer"&gt;
+    &lt;cite&gt;Attribution&lt;/cite&gt;
+  &lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Inline Code</p>
+          <div class="story__preview">
+            <p>Use the <code class="code">.container</code> class for centered content with a <code class="code">max-width</code>.</p>
+          </div>
+          <pre class="code-block"><code>&lt;code class="code"&gt;.container&lt;/code&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Code Block</p>
+          <div class="story__preview">
+            <pre class="code-block"><code>&lt;link rel="stylesheet" href="purissimo.css"&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Keyboard Keys</p>
+          <div class="story__preview">
+            <p>Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save, or <kbd>Esc</kbd> to close.</p>
+          </div>
+          <pre class="code-block"><code>&lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           16. Lists
+           ============================================ -->
+      <section id="lists" class="story">
+        <h2 class="story__title">Lists</h2>
+        <p class="story__desc">Unordered, ordered, and unstyled list variants.</p>
+
+        <div class="story__section">
+          <p class="story__label">Unordered List</p>
+          <div class="story__preview">
+            <ul class="list">
+              <li>First item</li>
+              <li>Second item</li>
+              <li>Third item</li>
+            </ul>
+          </div>
+          <pre class="code-block"><code>&lt;ul class="list"&gt;
+  &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Ordered List</p>
+          <div class="story__preview">
+            <ol class="list list--ordered">
+              <li>First step</li>
+              <li>Second step</li>
+              <li>Third step</li>
+            </ol>
+          </div>
+          <pre class="code-block"><code>&lt;ol class="list list--ordered"&gt;
+  &lt;li&gt;Step&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">No Style List</p>
+          <div class="story__preview">
+            <ul class="list list--none">
+              <li>No bullet item</li>
+              <li>No bullet item</li>
+              <li>No bullet item</li>
+            </ul>
+          </div>
+          <pre class="code-block"><code>&lt;ul class="list list--none"&gt;
+  &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           17. Figures
+           ============================================ -->
+      <section id="figures" class="story">
+        <h2 class="story__title">Figures</h2>
+        <p class="story__desc">Images with captions using the figure component.</p>
+
+        <div class="story__section">
+          <div class="story__preview">
+            <figure class="figure" style="max-width: 400px;">
+              <img class="figure__image" src="purissimo_og.png" alt="Purissimo design system preview" width="400" height="210">
+              <figcaption class="figure__caption">Purissimo — a minimalist design system.</figcaption>
+            </figure>
+          </div>
+          <pre class="code-block"><code>&lt;figure class="figure"&gt;
+  &lt;img class="figure__image" src="image.jpg" alt="Description"&gt;
+  &lt;figcaption class="figure__caption"&gt;Caption text&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           18. Grid & Containers
+           ============================================ -->
+      <section id="grid-containers" class="story">
+        <h2 class="story__title">Grid &amp; Containers</h2>
+        <p class="story__desc">Container widths, 12-column grid, responsive columns, and gap utilities.</p>
+
+        <div class="story__section">
+          <p class="story__label">Containers</p>
+          <div class="story__preview p-0">
+            <div style="background: var(--glacial-50); padding: var(--space-2) 0;">
+              <div class="container" style="background: var(--glacial-100); padding: var(--space-2); text-align: center; font-size: var(--font-size-sm);">.container (max 1200px)</div>
+            </div>
+            <div style="background: var(--frost); padding: var(--space-2) 0;">
+              <div class="container--narrow mx-auto" style="background: var(--glacial-100); padding: var(--space-2); text-align: center; font-size: var(--font-size-sm);">.container--narrow (max 800px)</div>
+            </div>
+            <div style="background: var(--glacial-50); padding: var(--space-2) 0;">
+              <div class="container--wide mx-auto" style="background: var(--glacial-100); padding: var(--space-2); text-align: center; font-size: var(--font-size-sm);">.container--wide (max 1400px)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">12-Column Grid</p>
+          <div class="story__preview">
+            <div class="grid gap-2">
+              <div class="col-1"><div class="demo-box">1</div></div>
+              <div class="col-1"><div class="demo-box">1</div></div>
+              <div class="col-1"><div class="demo-box">1</div></div>
+              <div class="col-1"><div class="demo-box">1</div></div>
+              <div class="col-1"><div class="demo-box">1</div></div>
+              <div class="col-1"><div class="demo-box">1</div></div>
+              <div class="col-1"><div class="demo-box">1</div></div>
+              <div class="col-1"><div class="demo-box">1</div></div>
+              <div class="col-1"><div class="demo-box">1</div></div>
+              <div class="col-1"><div class="demo-box">1</div></div>
+              <div class="col-1"><div class="demo-box">1</div></div>
+              <div class="col-1"><div class="demo-box">1</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Column Spans</p>
+          <div class="story__preview">
+            <div class="grid gap-2 mb-2">
+              <div class="col-12"><div class="demo-box">col-12</div></div>
+            </div>
+            <div class="grid gap-2 mb-2">
+              <div class="col-6"><div class="demo-box">col-6</div></div>
+              <div class="col-6"><div class="demo-box">col-6</div></div>
+            </div>
+            <div class="grid gap-2 mb-2">
+              <div class="col-4"><div class="demo-box">col-4</div></div>
+              <div class="col-4"><div class="demo-box">col-4</div></div>
+              <div class="col-4"><div class="demo-box">col-4</div></div>
+            </div>
+            <div class="grid gap-2 mb-2">
+              <div class="col-3"><div class="demo-box">col-3</div></div>
+              <div class="col-3"><div class="demo-box">col-3</div></div>
+              <div class="col-3"><div class="demo-box">col-3</div></div>
+              <div class="col-3"><div class="demo-box">col-3</div></div>
+            </div>
+            <div class="grid gap-2 mb-2">
+              <div class="col-8"><div class="demo-box">col-8</div></div>
+              <div class="col-4"><div class="demo-box">col-4</div></div>
+            </div>
+            <div class="grid gap-2">
+              <div class="col-3"><div class="demo-box">col-3</div></div>
+              <div class="col-6"><div class="demo-box">col-6</div></div>
+              <div class="col-3"><div class="demo-box">col-3</div></div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="grid gap-2"&gt;
+  &lt;div class="col-8"&gt;...&lt;/div&gt;
+  &lt;div class="col-4"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Responsive Columns</p>
+          <div class="story__preview">
+            <div class="grid gap-2">
+              <div class="col-12 sm:col-6 md:col-4 lg:col-3"><div class="demo-box">12 / sm:6 / md:4 / lg:3</div></div>
+              <div class="col-12 sm:col-6 md:col-4 lg:col-3"><div class="demo-box">12 / sm:6 / md:4 / lg:3</div></div>
+              <div class="col-12 sm:col-6 md:col-4 lg:col-3"><div class="demo-box">12 / sm:6 / md:4 / lg:3</div></div>
+              <div class="col-12 sm:col-6 md:col-4 lg:col-3"><div class="demo-box">12 / sm:6 / md:4 / lg:3</div></div>
+            </div>
+            <p class="text-xs text-muted mt-2">Resize the browser to see columns reflow at sm (640px), md (768px), lg (1024px) breakpoints.</p>
+          </div>
+          <pre class="code-block"><code>&lt;div class="col-12 sm:col-6 md:col-4 lg:col-3"&gt;...&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Gap Variations</p>
+          <div class="story__preview">
+            <p class="text-xs text-muted mb-2">gap-1</p>
+            <div class="grid gap-1 mb-4">
+              <div class="col-3"><div class="demo-box">A</div></div>
+              <div class="col-3"><div class="demo-box">B</div></div>
+              <div class="col-3"><div class="demo-box">C</div></div>
+              <div class="col-3"><div class="demo-box">D</div></div>
+            </div>
+            <p class="text-xs text-muted mb-2">gap-4</p>
+            <div class="grid gap-4 mb-4">
+              <div class="col-3"><div class="demo-box">A</div></div>
+              <div class="col-3"><div class="demo-box">B</div></div>
+              <div class="col-3"><div class="demo-box">C</div></div>
+              <div class="col-3"><div class="demo-box">D</div></div>
+            </div>
+            <p class="text-xs text-muted mb-2">gap-8</p>
+            <div class="grid gap-8">
+              <div class="col-3"><div class="demo-box">A</div></div>
+              <div class="col-3"><div class="demo-box">B</div></div>
+              <div class="col-3"><div class="demo-box">C</div></div>
+              <div class="col-3"><div class="demo-box">D</div></div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="grid gap-1"&gt;...&lt;/div&gt;
+&lt;div class="grid gap-4"&gt;...&lt;/div&gt;
+&lt;div class="grid gap-8"&gt;...&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           19. Spacing
+           ============================================ -->
+      <section id="spacing" class="story">
+        <h2 class="story__title">Spacing</h2>
+        <p class="story__desc">Margin and padding utility classes (base-4 scale).</p>
+
+        <div class="story__section">
+          <p class="story__label">Margin Utilities</p>
+          <div class="story__preview">
+            <p class="text-xs text-muted mb-3">Colored area = margin, white area = element</p>
+            <div class="flex gap-4" style="flex-wrap: wrap;">
+              <div>
+                <p class="text-xs text-muted mb-1">.m-1 (4px)</p>
+                <div class="spacing-demo"><div class="spacing-inner m-1">m-1</div></div>
+              </div>
+              <div>
+                <p class="text-xs text-muted mb-1">.m-2 (8px)</p>
+                <div class="spacing-demo"><div class="spacing-inner m-2">m-2</div></div>
+              </div>
+              <div>
+                <p class="text-xs text-muted mb-1">.m-4 (16px)</p>
+                <div class="spacing-demo"><div class="spacing-inner m-4">m-4</div></div>
+              </div>
+              <div>
+                <p class="text-xs text-muted mb-1">.m-6 (24px)</p>
+                <div class="spacing-demo"><div class="spacing-inner m-6">m-6</div></div>
+              </div>
+              <div>
+                <p class="text-xs text-muted mb-1">.m-8 (32px)</p>
+                <div class="spacing-demo"><div class="spacing-inner m-8">m-8</div></div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <p class="text-xs text-muted mb-1">Directional: .mt-4, .mb-4, .mx-4, .my-4</p>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;!-- Full margin --&gt;
+&lt;div class="m-4"&gt;...&lt;/div&gt;
+
+&lt;!-- Directional --&gt;
+&lt;div class="mt-4"&gt;...&lt;/div&gt;  &lt;!-- top --&gt;
+&lt;div class="mb-4"&gt;...&lt;/div&gt;  &lt;!-- bottom --&gt;
+&lt;div class="mx-4"&gt;...&lt;/div&gt;  &lt;!-- horizontal --&gt;
+&lt;div class="my-4"&gt;...&lt;/div&gt;  &lt;!-- vertical --&gt;
+&lt;div class="mx-auto"&gt;...&lt;/div&gt;  &lt;!-- center horizontally --&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Padding Utilities</p>
+          <div class="story__preview">
+            <p class="text-xs text-muted mb-3">Colored area = padding, inner area = content</p>
+            <div class="flex gap-4" style="flex-wrap: wrap;">
+              <div>
+                <p class="text-xs text-muted mb-1">.p-1 (4px)</p>
+                <div class="p-1" style="background: var(--glacial-100);"><div style="background: var(--color-bg-primary); padding: 2px; font-size: var(--font-size-xs);">p-1</div></div>
+              </div>
+              <div>
+                <p class="text-xs text-muted mb-1">.p-2 (8px)</p>
+                <div class="p-2" style="background: var(--glacial-100);"><div style="background: var(--color-bg-primary); padding: 2px; font-size: var(--font-size-xs);">p-2</div></div>
+              </div>
+              <div>
+                <p class="text-xs text-muted mb-1">.p-4 (16px)</p>
+                <div class="p-4" style="background: var(--glacial-100);"><div style="background: var(--color-bg-primary); padding: 2px; font-size: var(--font-size-xs);">p-4</div></div>
+              </div>
+              <div>
+                <p class="text-xs text-muted mb-1">.p-6 (24px)</p>
+                <div class="p-6" style="background: var(--glacial-100);"><div style="background: var(--color-bg-primary); padding: 2px; font-size: var(--font-size-xs);">p-6</div></div>
+              </div>
+              <div>
+                <p class="text-xs text-muted mb-1">.p-8 (32px)</p>
+                <div class="p-8" style="background: var(--glacial-100);"><div style="background: var(--color-bg-primary); padding: 2px; font-size: var(--font-size-xs);">p-8</div></div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <p class="text-xs text-muted mb-1">Directional: .pt-4, .pb-4, .px-4, .py-4</p>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;!-- Full padding --&gt;
+&lt;div class="p-4"&gt;...&lt;/div&gt;
+
+&lt;!-- Directional --&gt;
+&lt;div class="pt-4"&gt;...&lt;/div&gt;  &lt;!-- top --&gt;
+&lt;div class="pb-4"&gt;...&lt;/div&gt;  &lt;!-- bottom --&gt;
+&lt;div class="px-4"&gt;...&lt;/div&gt;  &lt;!-- horizontal --&gt;
+&lt;div class="py-4"&gt;...&lt;/div&gt;  &lt;!-- vertical --&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           20. Display & Flex
+           ============================================ -->
+      <section id="display-flex" class="story">
+        <h2 class="story__title">Display &amp; Flex</h2>
+        <p class="story__desc">Display modes, flex direction, justify, and align utilities.</p>
+
+        <div class="story__section">
+          <p class="story__label">Display Utilities</p>
+          <div class="story__preview">
+            <div class="mb-2">
+              <span class="block demo-box mb-1">.block (full width)</span>
+            </div>
+            <div class="mb-2">
+              <span class="inline demo-box">.inline</span>
+              <span class="inline demo-box">.inline</span>
+            </div>
+            <div class="mb-2">
+              <span class="inline-block demo-box">.inline-block</span>
+              <span class="inline-block demo-box">.inline-block</span>
+            </div>
+            <div class="flex gap-2 mb-2">
+              <span class="demo-box">.flex child</span>
+              <span class="demo-box">.flex child</span>
+            </div>
+            <div class="mb-2">
+              <span class="hidden">.hidden (not visible)</span>
+              <span class="text-xs text-muted">.hidden element is here but invisible</span>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="block"&gt;...&lt;/div&gt;
+&lt;span class="inline"&gt;...&lt;/span&gt;
+&lt;span class="inline-block"&gt;...&lt;/span&gt;
+&lt;div class="flex"&gt;...&lt;/div&gt;
+&lt;div class="grid"&gt;...&lt;/div&gt;
+&lt;div class="hidden"&gt;...&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Flex Direction</p>
+          <div class="story__preview">
+            <p class="text-xs text-muted mb-2">.flex-row (default)</p>
+            <div class="flex flex-row gap-2 mb-4">
+              <span class="demo-box">A</span>
+              <span class="demo-box">B</span>
+              <span class="demo-box">C</span>
+            </div>
+            <p class="text-xs text-muted mb-2">.flex-col</p>
+            <div class="flex flex-col gap-2">
+              <span class="demo-box">A</span>
+              <span class="demo-box">B</span>
+              <span class="demo-box">C</span>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="flex flex-row gap-2"&gt;...&lt;/div&gt;
+&lt;div class="flex flex-col gap-2"&gt;...&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Justify Content</p>
+          <div class="story__preview">
+            <p class="text-xs text-muted mb-2">.justify-start</p>
+            <div class="flex justify-start gap-2 mb-3" style="background: var(--frost); padding: var(--space-2); border-radius: var(--radius-sm);">
+              <span class="demo-box">A</span><span class="demo-box">B</span><span class="demo-box">C</span>
+            </div>
+            <p class="text-xs text-muted mb-2">.justify-center</p>
+            <div class="flex justify-center gap-2 mb-3" style="background: var(--frost); padding: var(--space-2); border-radius: var(--radius-sm);">
+              <span class="demo-box">A</span><span class="demo-box">B</span><span class="demo-box">C</span>
+            </div>
+            <p class="text-xs text-muted mb-2">.justify-end</p>
+            <div class="flex justify-end gap-2 mb-3" style="background: var(--frost); padding: var(--space-2); border-radius: var(--radius-sm);">
+              <span class="demo-box">A</span><span class="demo-box">B</span><span class="demo-box">C</span>
+            </div>
+            <p class="text-xs text-muted mb-2">.justify-between</p>
+            <div class="flex justify-between mb-0" style="background: var(--frost); padding: var(--space-2); border-radius: var(--radius-sm);">
+              <span class="demo-box">A</span><span class="demo-box">B</span><span class="demo-box">C</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Align Items</p>
+          <div class="story__preview">
+            <p class="text-xs text-muted mb-2">.items-start</p>
+            <div class="flex items-start gap-2 mb-3" style="background: var(--frost); padding: var(--space-2); border-radius: var(--radius-sm); min-height: 80px;">
+              <span class="demo-box">Short</span><span class="demo-box" style="padding: var(--space-4) var(--space-2);">Tall</span><span class="demo-box">Short</span>
+            </div>
+            <p class="text-xs text-muted mb-2">.items-center</p>
+            <div class="flex items-center gap-2 mb-3" style="background: var(--frost); padding: var(--space-2); border-radius: var(--radius-sm); min-height: 80px;">
+              <span class="demo-box">Short</span><span class="demo-box" style="padding: var(--space-4) var(--space-2);">Tall</span><span class="demo-box">Short</span>
+            </div>
+            <p class="text-xs text-muted mb-2">.items-end</p>
+            <div class="flex items-end gap-2 mb-3" style="background: var(--frost); padding: var(--space-2); border-radius: var(--radius-sm); min-height: 80px;">
+              <span class="demo-box">Short</span><span class="demo-box" style="padding: var(--space-4) var(--space-2);">Tall</span><span class="demo-box">Short</span>
+            </div>
+            <p class="text-xs text-muted mb-2">.items-stretch</p>
+            <div class="flex items-stretch gap-2" style="background: var(--frost); padding: var(--space-2); border-radius: var(--radius-sm); min-height: 80px;">
+              <span class="demo-box">A</span><span class="demo-box">B</span><span class="demo-box">C</span>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="flex items-center justify-between"&gt;...&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           21. Text & Font Utilities
+           ============================================ -->
+      <section id="text-font" class="story">
+        <h2 class="story__title">Text &amp; Font Utilities</h2>
+        <p class="story__desc">Text alignment and screen reader utility.</p>
+
+        <div class="story__section">
+          <p class="story__label">Text Alignment</p>
+          <div class="story__preview">
+            <p class="text-left mb-2" style="background: var(--frost); padding: var(--space-2); border-radius: var(--radius-sm);">.text-left</p>
+            <p class="text-center mb-2" style="background: var(--frost); padding: var(--space-2); border-radius: var(--radius-sm);">.text-center</p>
+            <p class="text-right" style="background: var(--frost); padding: var(--space-2); border-radius: var(--radius-sm);">.text-right</p>
+          </div>
+          <pre class="code-block"><code>&lt;p class="text-left"&gt;...&lt;/p&gt;
+&lt;p class="text-center"&gt;...&lt;/p&gt;
+&lt;p class="text-right"&gt;...&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Screen Reader Only</p>
+          <div class="story__preview">
+            <p>The <code class="code">.sr-only</code> class visually hides content while keeping it accessible to screen readers. The text below is present in the DOM but invisible:</p>
+            <span class="sr-only">This text is only visible to screen readers.</span>
+            <p class="text-sm text-muted mt-2">Inspect the DOM to see the hidden <code class="code">&lt;span class="sr-only"&gt;</code> element above.</p>
+          </div>
+          <pre class="code-block"><code>&lt;span class="sr-only"&gt;Accessible label&lt;/span&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           22. Width & Overflow
+           ============================================ -->
+      <section id="width-overflow" class="story">
+        <h2 class="story__title">Width &amp; Overflow</h2>
+        <p class="story__desc">Width constraints and overflow behavior.</p>
+
+        <div class="story__section">
+          <div class="story__preview">
+            <div class="mb-4">
+              <p class="text-xs text-muted mb-1">.w-full (100% width)</p>
+              <div class="w-full demo-box">.w-full</div>
+            </div>
+            <div class="mb-4">
+              <p class="text-xs text-muted mb-1">.w-auto (intrinsic width)</p>
+              <div class="w-auto demo-box" style="display: inline-block;">.w-auto</div>
+            </div>
+            <div>
+              <p class="text-xs text-muted mb-1">.overflow-auto (scrollable when content overflows)</p>
+              <div class="overflow-auto" style="max-height: 80px; border: var(--border-width-thin) solid var(--color-border-light); border-radius: var(--radius-sm); padding: var(--space-2);">
+                <p>Line 1 of scrollable content</p>
+                <p>Line 2 of scrollable content</p>
+                <p>Line 3 of scrollable content</p>
+                <p>Line 4 of scrollable content</p>
+                <p>Line 5 of scrollable content</p>
+                <p>Line 6 of scrollable content</p>
+              </div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="w-full"&gt;...&lt;/div&gt;
+&lt;div class="w-auto"&gt;...&lt;/div&gt;
+&lt;div class="overflow-auto"&gt;...&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================
+           23. Accessibility
+           ============================================ -->
+      <section id="accessibility" class="story">
+        <h2 class="story__title">Accessibility</h2>
+        <p class="story__desc">Built-in accessibility features and user preference support.</p>
+
+        <div class="story__section">
+          <p class="story__label">Skip Link</p>
+          <div class="story__preview">
+            <p>The <code class="code">.skip-link</code> is positioned off-screen and becomes visible when focused via keyboard (<kbd>Tab</kbd>). Try pressing Tab on this page to see it.</p>
+          </div>
+          <pre class="code-block"><code>&lt;a href="#main" class="skip-link"&gt;Skip to main content&lt;/a&gt;</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Prefers Reduced Motion</p>
+          <div class="story__preview">
+            <p>When the user has <code class="code">prefers-reduced-motion: reduce</code> enabled in their OS settings, all transitions and animations are effectively disabled (set to 0.01ms). This respects users who experience motion sickness or prefer less visual movement.</p>
+            <p class="text-sm text-muted mt-2">No demo needed — this is automatic based on OS/browser settings.</p>
+          </div>
+          <pre class="code-block"><code>/* Applied automatically via CSS */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Prefers High Contrast</p>
+          <div class="story__preview">
+            <p>When <code class="code">prefers-contrast: more</code> is active, Purissimo enhances borders, removes subtle shadows, and increases contrast on interactive elements like buttons, badges, tooltips, and form toggles.</p>
+            <p class="text-sm text-muted mt-2">No demo needed — this is automatic based on OS/browser settings.</p>
+          </div>
+          <pre class="code-block"><code>/* Applied automatically via CSS */
+@media (prefers-contrast: more) {
+  :root {
+    --color-border: var(--gray-500);
+    --shadow-sm: none;
+    /* ... enhanced styles */
+  }
+}</code></pre>
+        </div>
+
+        <div class="story__section">
+          <p class="story__label">Focus States</p>
+          <div class="story__preview">
+            <p class="mb-3">All interactive elements have visible <code class="code">:focus-visible</code> outlines. Tab through these elements to see the focus ring:</p>
+            <div class="flex gap-3" style="flex-wrap: wrap;">
+              <button class="btn btn--primary">Button</button>
+              <a href="#" class="link">Link</a>
+              <input type="text" class="form-input" placeholder="Input" style="max-width: 160px;">
+              <select class="form-select" style="max-width: 160px;">
+                <option>Select</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="container py-8 text-center text-sm text-muted">
+    <p>Purissimo v1.1.0 &mdash; "Less is pure" &mdash; Created by Rafael Craice</p>
+  </footer>
+
+</body>
+</html>

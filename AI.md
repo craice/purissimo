@@ -27,7 +27,7 @@ Purissimo is a minimalist design system built with pure HTML5 and CSS — zero J
 
 - HTML5
 - CSS (modern features allowed: custom properties, grid, flexbox, `:has()`, `@layer`, `@container`)
-- Google Fonts: Outfit
+- Google Fonts: Outfit, Material Symbols Outlined
 - No build tools required
 - Hosting: GitHub Pages
 
@@ -36,7 +36,10 @@ Purissimo is a minimalist design system built with pure HTML5 and CSS — zero J
 ```
 purissimo/
 ├── purissimo.css           # Main CSS file
+├── purissimo.min.css       # Minified production version
 ├── index.html              # Landing page + Documentation
+├── catalog.html            # Component catalog / storybook
+├── examples.html           # Component composition recipes
 ├── AI.md                   # This file
 ├── SPECIFICATION.md        # Design specification
 ├── DEVELOPMENT_ROADMAP.md  # Task list and logs
@@ -239,13 +242,21 @@ The section below is for AI tools (Claude, ChatGPT, Copilot, etc.) generating HT
 </label>
 ```
 
+### Icon
+
+```html
+<span class="icon" aria-hidden="true">info</span>
+<!-- Available: info, check_circle, warning, error, close -->
+```
+
 ### Alert
 
 ```html
 <div class="alert alert--info" role="alert">
-  <span class="alert__icon" aria-hidden="true">&#8505;</span>
+  <span class="alert__icon icon" aria-hidden="true">info</span>
   <p class="alert__message">Message text.</p>
 </div>
+<!-- Icons: info, check_circle (success), warning, error -->
 <!-- Variants: alert--info, alert--success, alert--warning, alert--error -->
 ```
 
@@ -284,7 +295,7 @@ The section below is for AI tools (Claude, ChatGPT, Copilot, etc.) generating HT
   <div class="modal__content" role="dialog" aria-modal="true">
     <header class="modal__header">
       <h2 class="modal__title">Title</h2>
-      <a href="#" class="modal__close" aria-label="Close">&times;</a>
+      <a href="#" class="modal__close" aria-label="Close"><span class="icon" aria-hidden="true">close</span></a>
     </header>
     <div class="modal__body"><p>Content</p></div>
     <footer class="modal__footer">

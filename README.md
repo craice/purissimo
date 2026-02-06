@@ -59,10 +59,10 @@ Download `purissimo.css` from this repository and link it in your HTML.
 
 | File | Size |
 |------|------|
-| `purissimo.css` | ~60KB |
-| `purissimo.min.css` | ~39KB |
+| `purissimo.css` | ~61KB |
+| `purissimo.min.css` | ~40KB |
 
-No images. No JavaScript. No external dependencies beyond Google Fonts (Outfit + JetBrains Mono).
+No images. No JavaScript. No external dependencies beyond Google Fonts (Outfit, JetBrains Mono, Material Symbols Outlined).
 
 ## Documentation
 

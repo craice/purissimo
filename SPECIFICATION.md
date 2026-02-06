@@ -443,11 +443,25 @@ Subtle, cool-toned shadows for depth without heaviness.
 <article class="card card--glass">...</article> <!-- Frosted glass effect -->
 ```
 
-### 5.7 Alerts / Messages
+### 5.7 Icons (Material Symbols)
+
+Purissimo uses Google Material Symbols Outlined for iconography. Only a subset of icons is loaded via the `icon_names` parameter for performance (~2KB vs 295KB full set).
+
+```html
+<!-- Basic usage -->
+<span class="icon" aria-hidden="true">info</span>
+
+<!-- Available ligatures -->
+<!-- info, check_circle, warning, error, close -->
+```
+
+The `.icon` class sets the font family, size (`1.25rem`), and rendering properties. Use `aria-hidden="true"` since icons are decorative — the meaning is conveyed by surrounding text or `aria-label`.
+
+### 5.8 Alerts / Messages
 
 ```html
 <div class="alert alert--info" role="alert">
-  <span class="alert__icon">ℹ</span>
+  <span class="alert__icon icon" aria-hidden="true">info</span>
   <p class="alert__message">This is an informational message.</p>
 </div>
 
@@ -456,7 +470,7 @@ Subtle, cool-toned shadows for depth without heaviness.
 <div class="alert alert--error" role="alert">...</div>
 ```
 
-### 5.8 Navigation
+### 5.9 Navigation
 
 #### Nav Bar
 
@@ -483,7 +497,7 @@ Subtle, cool-toned shadows for depth without heaviness.
 </nav>
 ```
 
-### 5.9 Interactive Components (No JS)
+### 5.10 Interactive Components (No JS)
 
 #### Accordion
 
@@ -535,7 +549,7 @@ Subtle, cool-toned shadows for depth without heaviness.
   <div class="modal__content" role="dialog" aria-modal="true">
     <header class="modal__header">
       <h2 class="modal__title">Modal Title</h2>
-      <a href="#" class="modal__close" aria-label="Close modal">&times;</a>
+      <a href="#" class="modal__close" aria-label="Close modal"><span class="icon" aria-hidden="true">close</span></a>
     </header>
     <div class="modal__body">
       <p>Modal content here.</p>
@@ -563,7 +577,7 @@ Subtle, cool-toned shadows for depth without heaviness.
 </button>
 ```
 
-### 5.10 Lists
+### 5.11 Lists
 
 ```html
 <ul class="list">
@@ -581,7 +595,7 @@ Subtle, cool-toned shadows for depth without heaviness.
 </ul>
 ```
 
-### 5.11 Badges / Tags
+### 5.12 Badges / Tags
 
 ```html
 <span class="badge">Default</span>
@@ -591,14 +605,14 @@ Subtle, cool-toned shadows for depth without heaviness.
 <span class="badge badge--error">Error</span>
 ```
 
-### 5.12 Dividers
+### 5.13 Dividers
 
 ```html
 <hr class="divider">
 <hr class="divider divider--subtle">
 ```
 
-### 5.13 Code
+### 5.14 Code
 
 ```html
 <code class="code">inline code</code>
@@ -610,7 +624,7 @@ function hello() {
 </code></pre>
 ```
 
-### 5.14 Blockquote
+### 5.15 Blockquote
 
 ```html
 <blockquote class="blockquote">
@@ -621,7 +635,7 @@ function hello() {
 </blockquote>
 ```
 
-### 5.15 Image
+### 5.16 Image
 
 ```html
 <figure class="figure">
@@ -706,8 +720,11 @@ Modern CSS features allowed:
 ```
 purissimo/
 ├── purissimo.css           # Main CSS file (single file distribution)
+├── purissimo.min.css       # Minified production version
 ├── index.html              # Landing page + Documentation
-├── CLAUDE.md               # AI usage instructions
+├── catalog.html            # Component catalog / storybook
+├── examples.html           # Component composition recipes
+├── AI.md                   # AI usage instructions
 ├── SPECIFICATION.md        # This file
 ├── README.md               # Project readme
 ├── LICENSE                 # MIT License
@@ -877,10 +894,12 @@ Purissimo is a pure HTML5/CSS design system. No JavaScript required.
 - Lighthouse score 95+
 - WCAG 2.1 AA compliance
 
-### Version 1.1 (Planned)
-- More component variants
-- Print stylesheet
-- Additional examples
+### Version 1.1 (Current)
+- Material Symbols Outlined icon system (`.icon` class with subseted font)
+- Component catalog page (`catalog.html`)
+- Component recipes / examples page (`examples.html`)
+- Alert icons migrated from emoji to Material Symbols
+- Modal close button migrated to Material Symbols
 
 ### Version 2.0 (Future)
 - Dark mode (optional, user preference)
@@ -952,7 +971,7 @@ Use `@layer` for cascade organization:
  * Purissimo Design System
  * "Less is pure"
  * 
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Rafael Craice
  * License: MIT
  * Repository: https://github.com/[username]/purissimo
