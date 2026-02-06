@@ -302,24 +302,24 @@
         <p class="text-sm text-muted mb-4">Informational messages with semantic color coding. Always include <code class="code">role="alert"</code> for screen reader announcements.</p>
         <div class="flex flex-col gap-3 mb-4">
           <div class="alert alert--info" role="alert">
-            <span class="alert__icon" aria-hidden="true">ℹ️</span>
+            <span class="alert__icon icon" aria-hidden="true">info</span>
             <p class="alert__message">This is an informational message.</p>
           </div>
           <div class="alert alert--success" role="alert">
-            <span class="alert__icon" aria-hidden="true">✅</span>
+            <span class="alert__icon icon" aria-hidden="true">check_circle</span>
             <p class="alert__message">Operation completed successfully.</p>
           </div>
           <div class="alert alert--warning" role="alert">
-            <span class="alert__icon" aria-hidden="true">⚠️</span>
+            <span class="alert__icon icon" aria-hidden="true">warning</span>
             <p class="alert__message">Please review before continuing.</p>
           </div>
           <div class="alert alert--error" role="alert">
-            <span class="alert__icon" aria-hidden="true">❌</span>
+            <span class="alert__icon icon" aria-hidden="true">error</span>
             <p class="alert__message">Something went wrong. Please try again.</p>
           </div>
         </div>
         <pre class="code-block"><code>&lt;div class="alert alert--info" role="alert"&gt;
-  &lt;span class="alert__icon" aria-hidden="true"&gt;&amp;#8505;&lt;/span&gt;
+  &lt;span class="alert__icon icon" aria-hidden="true"&gt;info&lt;/span&gt;
   &lt;p class="alert__message"&gt;Informational message.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
       </article>
@@ -409,7 +409,7 @@
           <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
             <header class="modal__header">
               <h4 id="demo-modal-title" class="modal__title">Modal Title</h4>
-              <a href="#comp-modal" class="modal__close" aria-label="Close modal">&times;</a>
+              <a href="#comp-modal" class="modal__close" aria-label="Close modal"><span class="icon" aria-hidden="true">close</span></a>
             </header>
             <div class="modal__body"><p>This modal was opened with a simple anchor link. No JavaScript needed.</p></div>
             <footer class="modal__footer">
@@ -424,7 +424,7 @@
   &lt;div class="modal__content" role="dialog" aria-modal="true"&gt;
     &lt;header class="modal__header"&gt;
       &lt;h2 class="modal__title"&gt;Title&lt;/h2&gt;
-      &lt;a href="#" class="modal__close" aria-label="Close"&gt;&amp;times;&lt;/a&gt;
+      &lt;a href="#" class="modal__close" aria-label="Close"&gt;&lt;span class="icon" aria-hidden="true"&gt;close&lt;/span&gt;&lt;/a&gt;
     &lt;/header&gt;
     &lt;div class="modal__body"&gt;&lt;p&gt;Content&lt;/p&gt;&lt;/div&gt;
     &lt;footer class="modal__footer"&gt;
@@ -739,7 +739,7 @@
     <section class="container py-16" aria-labelledby="roadmap-title">
       <h2 id="roadmap-title" class="heading-2 text-center mb-8">Roadmap</h2>
       <div class="container--narrow mx-auto">
-        <h3 class="heading-5 mb-2">Version 1.0 <span class="badge badge--success">Current</span></h3>
+        <h3 class="heading-5 mb-2">Version 1.0</h3>
         <ul class="list mb-6">
           <li>All base components (buttons, forms, cards, tables, alerts, navigation)</li>
           <li>Interactive components without JavaScript (accordion, tabs, modal, tooltip)</li>
@@ -749,18 +749,19 @@
           <li>User preference support (reduced motion, high contrast)</li>
         </ul>
 
-        <h3 class="heading-5 mb-2">Version 1.1 <span class="badge">Planned</span></h3>
+        <h3 class="heading-5 mb-2">Version 1.1 <span class="badge badge--success">Current</span></h3>
         <ul class="list mb-6">
-          <li>More component variants</li>
-          <li>Print stylesheet</li>
-          <li>Additional code examples</li>
+          <li>Material Symbols icons (info, check_circle, warning, error, close)</li>
+          <li>Component catalog with Do's &amp; Don'ts guidelines</li>
+          <li>Examples page with 8 composition recipes</li>
+          <li>Icons in alerts and modal close button</li>
         </ul>
 
         <h3 class="heading-5 mb-2">Version 2.0 <span class="badge">Future</span></h3>
         <ul class="list">
           <li>Dark mode (via prefers-color-scheme)</li>
           <li>Additional color themes</li>
-          <li>Component playground</li>
+          <li>Print stylesheet</li>
           <li>Figma design kit</li>
         </ul>
       </div>
@@ -790,7 +791,7 @@
        ============================================ -->
   <footer class="container py-8 text-center">
     <hr class="divider">
-    <p class="text-sm text-muted mb-2">Purissimo &mdash; "Less is pure"</p>
+    <p class="text-sm text-muted mb-2">Purissimo v1.1.0 &mdash; "Less is pure"</p>
     <p class="text-xs text-muted mb-2">
       <a href="https://github.com/craice/purissimo" class="link link--subtle">GitHub</a>
       &nbsp;&middot;&nbsp;
