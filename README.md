@@ -95,4 +95,4 @@ Please follow the existing BEM naming conventions and use CSS custom properties 
 
 ## License
 
-[MIT](LICENSE) — Rafael Craice
+[MIT](LICENSE) — [Rafael Craice](https://craice.me)
